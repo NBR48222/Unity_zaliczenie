@@ -10,6 +10,12 @@ public class PlayerMovement : MonoBehaviour
     // Granice ekranu
     private float minX, maxX, minY, maxY;
 
+    public GameObject laserPrefab;  // Prefabrykat lasera
+    public Transform firePoint;    // Punkt startowy dla wystrzałów
+    public float fireRate = 1f;    // Częstotliwość strzałów (na sekundę)
+    public int numberOfLasers = 1; // Liczba wystrzałów na raz
+    private float nextFireTime = 0f;  // Czas, kiedy będzie możliwe kolejne strzały
+
     private void Start()
     {
         // Ustalenie granic ekranu na podstawie rozmiaru kamery
@@ -47,5 +53,20 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = newPosition;
             }
         }
+
+        if (Input.touchCount > 0 && Time.time >= nextFireTime)
+        {
+            nextFireTime = Time.time + 1f / fireRate;  // Ustalamy czas kolejnych strzałów
+            Fire();  // Wywołujemy funkcję strzału
+        }
+    }
+
+    void Fire()
+    {
+        for (int i = 0; i < numberOfLasers; i++)
+        {
+            Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
+        }
+
     }
 }
