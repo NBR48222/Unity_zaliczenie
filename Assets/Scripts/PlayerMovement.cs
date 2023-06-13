@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float fireRate = 1f;    // Częstotliwość strzałów (na sekundę)
     public int numberOfLasers = 1; // Liczba wystrzałów na raz
     private float nextFireTime = 0f;  // Czas, kiedy będzie możliwe kolejne strzały
+    private int playerLevel = 1; //Poziom gracza
 
     private void Start()
     {
@@ -63,10 +64,30 @@ public class PlayerMovement : MonoBehaviour
 
     void Fire()
     {
-        for (int i = 0; i < numberOfLasers; i++)
+        if (playerLevel == 1)
         {
-            Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
+            Instantiate(laserPrefab, transform.position, Quaternion.identity);
         }
+        else if (playerLevel >= 2)
+        {
+            Vector3 offset = new Vector3(0.2f, 0, 0); // Lekki odstęp między laserami
+            Instantiate(laserPrefab, transform.position - offset, Quaternion.identity);
+            Instantiate(laserPrefab, transform.position + offset, Quaternion.identity);
+        }
+    }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Buff"))
+        {
+            CollectBuff(other.gameObject);
+        }
+    }
+
+    void CollectBuff(GameObject buff)
+    {
+        Destroy(buff); // Zniszczenie buffa
+        playerLevel++; // Zwiększenie poziomu gracza
+                       // Dodatkowe działania po zebraniu buffa
     }
 }
