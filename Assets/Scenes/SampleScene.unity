@@ -385,6 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 237363148}
   - component: {fileID: 237363147}
+  - component: {fileID: 237363149}
   m_Layer: 0
   m_Name: SpawnArea
   m_TagString: Untagged
@@ -405,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffPrefab: {fileID: 8517189922808321394, guid: cfb168f89a4134e84958ac98c57470c8, type: 3}
-  spawnInterval: 25
+  spawnInterval: 20
   spawnForce: 6
 --- !u!4 &237363148
 Transform:
@@ -415,13 +416,37 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237363146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2892056, y: 0.046419203, z: -1.0854969}
+  m_LocalPosition: {x: 0, y: 4.31, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &237363149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237363146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe1290da908b42d781fcdf6c57288fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kamikazeEnemyPrefab: {fileID: 5368058701203908235, guid: 12e4ae03254c548408e3379cccb7529e, type: 3}
+  shootingEnemyPrefab: {fileID: 153832748438438915, guid: 63197984471c3488eb95f3e488620ca6, type: 3}
+  spawnPoint: {fileID: 237363148}
+  spawnDelay: 5
+  waveDelay: 5
+  initialWaveSize: 5
+  kamikazeChance: 0.75
+  shootingChance: 0.25
+  kamikazeChanceIncrement: -0.025
+  shootingChanceIncrement: 0.025
+  minKamikazeChance: 0.5
+  maxShootingChance: 0.5
 --- !u!1 &369565576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,6 +1781,7 @@ GameObject:
   - component: {fileID: 1188027022}
   - component: {fileID: 1188027021}
   - component: {fileID: 1188027023}
+  - component: {fileID: 1188027024}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -1856,12 +1882,30 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.009701434, y: -0.014011622}
   m_Size: {x: 1.0667442, y: 0.81761885}
   m_Direction: 1
+--- !u!114 &1188027024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188027019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b863971b42314485afaf7be55eba71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRenderer: {fileID: 1591951315}
+  damageAssets:
+  - {fileID: 2245604316522691741, guid: d20bdcaba14154fa58595067aba5b38b, type: 3}
+  - {fileID: 8158512031645453692, guid: bc9d809404a0c476eb37ee38ce0ae9ac, type: 3}
+  - {fileID: 3713311907053620056, guid: 0535ea526d6534e3293e1467de0fd168, type: 3}
+  maxHealth: 4
 --- !u!1 &1401591085
 GameObject:
   m_ObjectHideFlags: 0

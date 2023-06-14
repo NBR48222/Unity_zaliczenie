@@ -6,11 +6,14 @@ TagManager:
   tags:
   - Enemy
   - Buff
+  - PlayerLaser
+  - EnemyLaser
+  - Shield
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemies
   - Water
   - UI
   - 
