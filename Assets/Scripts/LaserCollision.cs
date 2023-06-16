@@ -21,7 +21,6 @@ public class LaserCollision : MonoBehaviour
         // Sprawdź, czy kolizja dotyczy przeciwnika
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Tutaj dodaj kod, który ma być wykonany po trafieniu przeciwnika
             Destroy(gameObject);  // Zniszcz laser
         }
     }

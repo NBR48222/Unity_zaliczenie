@@ -8,8 +8,9 @@ public class ShootingDrone : MonoBehaviour
     public float shootingInterval = 1.5f; // Interwał między strzałami drona
     public GameObject bulletPrefab; // Prefab pocisku drona
     private float maxX, minX;
-
+    private GameObject spawnArea;
     private float shootingTimer; // Timer dla interwału strzałów
+    
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class ShootingDrone : MonoBehaviour
         float camDistance = Vector3.Distance(transform.position, Camera.main.transform.position);
         Vector2 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, camDistance));
         Vector2 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, camDistance));
+        spawnArea = GameObject.FindGameObjectWithTag("SpawnArea");
 
         minX = bottomLeft.x;
         maxX = topRight.x;
@@ -49,12 +51,14 @@ public class ShootingDrone : MonoBehaviour
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerLaser"))
+        if (other.gameObject.CompareTag("PlayerLaser"))
         {
             Destroy(other.gameObject); // Zniszcz laser gracza
             Destroy(gameObject); // Zniszcz przeciwnika
+            EnemyManager enemyManager = spawnArea.GetComponent<EnemyManager>();
+            enemyManager.EnemyDestroyed();
         }
     }
 }

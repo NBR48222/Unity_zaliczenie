@@ -9,6 +9,8 @@ TagManager:
   - PlayerLaser
   - EnemyLaser
   - Shield
+  - PlayerShip
+  - SpawnArea
   layers:
   - Default
   - TransparentFX

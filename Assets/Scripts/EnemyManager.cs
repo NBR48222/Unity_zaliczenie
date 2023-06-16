@@ -33,6 +33,8 @@ public class EnemyManager : MonoBehaviour
     }
 
     private void SpawnWave()
+{
+    if (enemiesRemaining <= 0)
     {
         for (int i = 0; i < currentWaveSize; i++)
         {
@@ -42,7 +44,10 @@ public class EnemyManager : MonoBehaviour
             Instantiate(enemyPrefab, spawnPosition, spawnRotation);
             enemiesRemaining++;
         }
+        
+        enemiesRemaining = currentWaveSize; // Ustaw wartość enemiesRemaining na początkową wartość rozmiaru fali
     }
+}
 
     private GameObject GetRandomEnemyPrefab()
     {
@@ -87,4 +92,3 @@ public class EnemyManager : MonoBehaviour
         currentShootingChance = Mathf.Clamp(currentShootingChance, 0f, maxShootingChance);
     }
 }
-
