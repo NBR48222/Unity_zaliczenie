@@ -1866,11 +1866,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0079f84d4cd194cba56dd9ff3ebc4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  laserPrefab: {fileID: 3657917122511961030, guid: c80dfe870dcbc9e41a171f6fabe20fc7, type: 3}
-  firePoint: {fileID: 2074375159}
-  fireRate: 1
+  moveSpeed: 0.15
   numberOfLasers: 1
+  fireRate: 1.2
+  firePoint: {fileID: 2074375159}
+  laserPrefab: {fileID: 3657917122511961030, guid: c80dfe870dcbc9e41a171f6fabe20fc7, type: 3}
 --- !u!50 &1188027022
 Rigidbody2D:
   serializedVersion: 4
